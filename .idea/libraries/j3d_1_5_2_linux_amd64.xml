@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="j3d-1_5_2-linux-amd64">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/j3d-1_5_2-linux-amd64.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

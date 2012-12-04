@@ -1,0 +1,11 @@
+exit=Выход
+new=Новая...
+results=Результаты
+game=Игра
+cascade=Каскадом
+tile=Плиткой
+window=Окно
+ttt_cube4x4=Крестики-нолики в кубе 4x4
+game_type=Тип игры
+select_type_of_game=Выберите тип игры\:
+game_wasnt_selected=Игра не была выбрана.

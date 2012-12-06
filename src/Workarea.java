@@ -16,7 +16,7 @@ public class Workarea extends JFrame
 
     private GameCollection collection;
 
-    private Properties _properties = new Properties();
+    private Map<String, Object> configurationHash = null;
 
     private static Workarea instance;
 
@@ -26,14 +26,10 @@ public class Workarea extends JFrame
     {
         super("Workarea");
 
-        _loadProperties();
-
         Locale.setDefault(new Locale(
-            _properties.getProperty("locale_language", "ru"),
-            _properties.getProperty("locale_country", "RU")
+            getConfigurationHash().get("locale_language").toString(),
+            getConfigurationHash().get("locale_country").toString()
         ));
-
-        saveProperties();
 
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -57,8 +53,22 @@ public class Workarea extends JFrame
         getContentPane().add(scrollPane, BorderLayout.CENTER);
     }
 
-    class WindowEventHandler extends WindowAdapter {
-        public void windowClosing(WindowEvent evt) {
+    public Map<String, Object> getConfigurationHash()
+    {
+        if (configurationHash == null) {
+            configurationHash = Db.getInstance().getConfigurationHash();
+        }
+        return configurationHash;
+    }
+
+    public void setConfigurationHash(Map<String, Object> _configurationHash) {
+        configurationHash = _configurationHash;
+    }
+
+    class WindowEventHandler extends WindowAdapter
+    {
+        public void windowClosing(WindowEvent evt)
+        {
             if (collection.getSize() > 0) {
                 return;
             }
@@ -363,42 +373,6 @@ public class Workarea extends JFrame
     {
         desktop.setVisible(true);
         add(desktop);
-    }
-
-    private void _loadProperties()
-    {
-        InputStream is = null;
-
-        System.out.print(Db.getInstance().getConfigurationHash());
-
-        try {
-            File f = new File("game.properties");
-            is = new FileInputStream(f);
-        }
-        catch ( Exception e ) { is = null; }
-
-        try {
-            if (is == null) {
-                is = getClass().getResourceAsStream("game.properties");
-            }
-            _properties.load(is);
-        }
-        catch (Exception e) { }
-    }
-
-    public void saveProperties() {
-        try {
-            File f = new File("game.properties");
-            OutputStream out = new FileOutputStream(f);
-            _properties.store(out, "This is an optional header comment string");
-        }
-        catch (Exception e ) {
-            e.printStackTrace();
-        }
-    }
-
-    public Properties getProperties() {
-        return _properties;
     }
 
     public static String getString(String str)

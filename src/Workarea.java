@@ -26,10 +26,7 @@ public class Workarea extends JFrame
     {
         super("Workarea");
 
-        Locale.setDefault(new Locale(
-            getConfigurationHash().get("locale_language").toString(),
-            getConfigurationHash().get("locale_country").toString()
-        ));
+        Locale.setDefault(Locale.forLanguageTag(getConfigurationHash().get("locale").toString()));
 
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -163,11 +160,11 @@ public class Workarea extends JFrame
             cfgPnlLanguage.add(cfgLngLabel, BorderLayout.WEST);
 
             HashMap<String,String> languages = new HashMap<String, String>();
-            languages.put("ru_RU", "Русский");
-            languages.put("en_US", "English");
+            languages.put("ru-RU", "Русский");
+            languages.put("en-US", "English");
 
             JComboBox cfgLng = new JComboBox(languages.values().toArray());
-            cfgLng.setSelectedItem(languages.get(Locale.getDefault().toString()));
+            cfgLng.setSelectedItem(languages.get(Locale.getDefault().toLanguageTag()));
             cfgPnlLanguage.add(cfgLng, BorderLayout.CENTER);
             /**
              * }

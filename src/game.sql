@@ -6,7 +6,7 @@ INSERT INTO "Players" VALUES(2,'Player 2',0);
 CREATE TABLE 'Configuration' (
     'locale' VARCHAR(5)
 , 'player1' INTEGER, 'player2' INTEGER);
-INSERT INTO "Configuration" VALUES('en_US',1,2);
+INSERT INTO "Configuration" VALUES('en-US',1,2);
 DELETE FROM sqlite_sequence;
-INSERT INTO "sqlite_sequence" VALUES('Players',2);
+INSERT INTO "sqlite_sequence" VALUES('Players',8);
 COMMIT;

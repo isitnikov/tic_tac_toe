@@ -152,11 +152,18 @@ public class Db {
         ArrayList<PlayerAbstract> players = new ArrayList<PlayerAbstract>();
         try {
             while (resultSet.next()) {
-                players.add(new HumanPlayer(
-                    resultSet.getInt("id"),
-                    resultSet.getString("name"),
-                    resultSet.getInt("wins")
-                ));
+                HumanPlayer player = null;
+                if (PlayerCollection.hasPlayer(resultSet.getInt("id"))) {
+                    player = PlayerCollection.getPlayer(resultSet.getInt("id"));
+                } else {
+                    player = new HumanPlayer(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("wins")
+                    );
+                    PlayerCollection.add(player);
+                }
+                players.add(player);
             }
         } catch (Exception e) {
             e.printStackTrace();

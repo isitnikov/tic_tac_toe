@@ -176,7 +176,12 @@ public class Workarea extends JFrame
             cfgPnlPlayer1.setLayout(new BorderLayout());
             tabConfig.add(cfgPnlPlayer1, BorderLayout.PAGE_START);
             JLabel cfgPlr1Label = new JLabel(getString("player1"), JLabel.LEFT);
-            cfgPnlPlayer1.add(cfgPlr1Label);
+            cfgPnlPlayer1.add(cfgPlr1Label, BorderLayout.WEST);
+
+            JComboBox player1List = new JComboBox(Db.getInstance().getPlayersAsObjects().toArray());
+            player1List.setSelectedItem(PlayerCollection.getPlayer(Integer.parseInt(getConfigurationHash().get("player1").toString())));
+            cfgPnlPlayer1.add(player1List, BorderLayout.CENTER);
+
             /**
              * }
              * PLAYER 2
@@ -187,7 +192,11 @@ public class Workarea extends JFrame
             cfgPnlPlayer2.setLayout(new BorderLayout());
             tabConfig.add(cfgPnlPlayer2, BorderLayout.PAGE_START);
             JLabel cfgPlr2Label = new JLabel(getString("player2"), JLabel.LEFT);
-            cfgPnlPlayer2.add(cfgPlr2Label);
+            cfgPnlPlayer2.add(cfgPlr2Label, BorderLayout.WEST);
+
+            JComboBox player2List = new JComboBox(Db.getInstance().getPlayersAsObjects().toArray());
+            player2List.setSelectedItem(PlayerCollection.getPlayer(Integer.parseInt(getConfigurationHash().get("player2").toString())));
+            cfgPnlPlayer2.add(player2List, BorderLayout.CENTER);
             /**
              * }
              */

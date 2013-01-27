@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class Field extends JButton {
     private GameAbstract _game = null;
-    private PlayerAbstract _player = null;
+    private HumanPlayer _player = null;
     private int _slice, _row, _column, _index;
 
     public Field() {
@@ -26,11 +26,11 @@ public class Field extends JButton {
         return _game;
     }
 
-    public void setPlayer(PlayerAbstract player) {
+    public void setPlayer(HumanPlayer player) {
         _player = player;
     }
 
-    public PlayerAbstract getPlayer() {
+    public HumanPlayer getPlayer() {
         return _player;
     }
 

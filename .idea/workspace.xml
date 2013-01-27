@@ -4,12 +4,17 @@
     <list default="true" id="48566d84-1cff-4282-8a47-5045c2df67e1" name="Default" comment="" />
     <ignored path="TicTacToe.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/data_en_US.properties" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1354780856052" ignored="false" />
-    <file path="/Workarea.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1355092756538" ignored="false" />
+    <file path="/data_en_US.properties" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1358534577522" ignored="false" />
+    <file path="/Workarea.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1358537885777" ignored="false" />
     <file path="$USER_HOME$/.IdeaIC12/config/options/debugger.renderers.xml" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1354782017537" ignored="false" />
     <file path="$USER_HOME$/.IdeaIC12/config/options/debugger.frameview.xml" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1354782017537" ignored="false" />
-    <file path="/PlayerCollection.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1355091787652" ignored="false" />
-    <file path="/Db.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1355091810524" ignored="false" />
+    <file path="/PlayerCollection.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1359027341943" ignored="false" />
+    <file path="/Db.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1358537544322" ignored="false" />
+    <file path="/PlayerAbstract.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1358574621855" ignored="false" />
+    <file path="/GameAbstract.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1359028438105" ignored="false" />
+    <file path="/Field.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1359026027625" ignored="false" />
+    <file path="/GameFabric.java" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1359027065340" ignored="false" />
+    <file path="/a.dummy" changelist="48566d84-1cff-4282-8a47-5045c2df67e1" time="1359026704343" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +31,7 @@
   <component name="DebuggerManager">
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/GameAbstract.java" line="170" class="GameAbstract" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/Workarea.java" line="284" class="Workarea$4" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -34,27 +39,13 @@
         <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/GameAbstract.java" line="216" class="GameAbstract" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Workarea.java" line="55" class="Workarea" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/Db.java" line="106" class="Db" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -113,43 +104,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Workarea.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Workarea.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Workarea.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="61" selection-start="7189" selection-end="7189" vertical-scroll-proportion="0.16107382">
-              <folding>
-                <element signature="e#5565#5581#0" expanded="true" />
-              </folding>
+            <state line="180" column="80" selection-start="6507" selection-end="6507" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Db.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Db.java">
+      <file leaf-file-name="PlayerAbstract.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PlayerAbstract.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="80" selection-start="4653" selection-end="4653" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#5754#5770#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WorkareaPane.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/WorkareaPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameCollection.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameCollection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="0" selection-end="526" vertical-scroll-proportion="0.0">
+            <state line="85" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -158,36 +125,54 @@
       <file leaf-file-name="PlayerCollection.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PlayerCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="41" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0">
+            <state line="38" column="51" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameAbstract.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GameAbstract.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="315" column="19" selection-start="9484" selection-end="9484" vertical-scroll-proportion="1.2114094">
               <folding>
-                <element signature="e#337#359#0" expanded="true" />
+                <element signature="e#706#719#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.sql" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game.sql">
+      <file leaf-file-name="List.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.7.0_09/src.zip!/java/util/List.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0">
+            <state line="434" column="6" selection-start="19325" selection-end="19325" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameAbstract.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameAbstract.java">
+      <file leaf-file-name="GameFabric.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameFabric.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="25" selection-start="1718" selection-end="1987" vertical-scroll-proportion="0.0">
+            <state line="61" column="136" selection-start="1648" selection-end="1648" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayersTableModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PlayersTableModel.java">
+      <file leaf-file-name="Db.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Db.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="31" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
+            <state line="106" column="0" selection-start="2831" selection-end="2831" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Field.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Field.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="23" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -199,7 +184,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="17" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0">
+            <state line="29" column="27" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -227,22 +212,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Field.java" />
-        <option value="$PROJECT_DIR$/src/GameFabric.java" />
         <option value="$PROJECT_DIR$/src/Music.java" />
-        <option value="$PROJECT_DIR$/src/GameAbstract.java" />
         <option value="$PROJECT_DIR$/src/KeyValue.java" />
         <option value="$PROJECT_DIR$/src/cfg.form" />
         <option value="$PROJECT_DIR$/src/HumanPlayer.java" />
         <option value="$PROJECT_DIR$/src/TableModel.java" />
-        <option value="$PROJECT_DIR$/src/PlayerAbstract.java" />
         <option value="$PROJECT_DIR$/src/PlayersTableModel.java" />
-        <option value="$PROJECT_DIR$/src/data_en_US.properties" />
         <option value="$PROJECT_DIR$/src/game.sql" />
-        <option value="$PROJECT_DIR$/src/PlayerCollection.java" />
-        <option value="$PROJECT_DIR$/src/Db.java" />
         <option value="$PROJECT_DIR$/src/WorkareaPane.java" />
+        <option value="$PROJECT_DIR$/src/data_en_US.properties" />
+        <option value="$PROJECT_DIR$/src/Db.java" />
         <option value="$PROJECT_DIR$/src/Workarea.java" />
+        <option value="$PROJECT_DIR$/src/PlayerAbstract.java" />
+        <option value="$PROJECT_DIR$/src/Field.java" />
+        <option value="$PROJECT_DIR$/src/GameFabric.java" />
+        <option value="$PROJECT_DIR$/src/PlayerCollection.java" />
+        <option value="$PROJECT_DIR$/src/GameAbstract.java" />
       </list>
     </option>
   </component>
@@ -281,16 +266,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -301,6 +276,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="TicTacToe" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -548,20 +533,20 @@
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.5944828" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.5944828" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973205" sideWeight="0.67202574" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39829606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3977747" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32127956" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.67202574" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.67202574" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1975547" sideWeight="0.49791378" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5020862" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1975547" sideWeight="0.49791378" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5020862" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.5944828" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -631,76 +616,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Db.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="47" selection-start="2118" selection-end="2118" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#5754#5770#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HumanPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameFabric.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="48" selection-start="1568" selection-end="1568" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HumanPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/src/sqlite-jdbc-3.7.2.jar!/org/sqlite/DB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="382" column="0" selection-start="12921" selection-end="12921" vertical-scroll-proportion="-0.12398374" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlayerAbstract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="52" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PlayersTableModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="31" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data_en_US.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="17" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data_ru_RU.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameAbstract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="25" selection-start="1718" selection-end="1987" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -715,42 +638,96 @@
     <entry file="file://$PROJECT_DIR$/src/WorkareaPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlayerCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="41" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#337#359#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Db.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="80" selection-start="4653" selection-end="4653" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#5754#5770#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data_ru_RU.properties">
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HumanPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="12" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_09/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="434" column="6" selection-start="19325" selection-end="19325" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameFabric.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="136" selection-start="1648" selection-end="1648" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Workarea.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="61" selection-start="7189" selection-end="7189" vertical-scroll-proportion="0.16107382">
+        <state line="180" column="80" selection-start="6507" selection-end="6507" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlayerCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="51" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data_en_US.properties">
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="27" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="23" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlayerAbstract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Db.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="0" selection-start="2831" selection-end="2831" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameAbstract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="315" column="19" selection-start="9484" selection-end="9484" vertical-scroll-proportion="1.2114094">
           <folding>
-            <element signature="e#5565#5581#0" expanded="true" />
+            <element signature="e#706#719#0" expanded="true" />
           </folding>
         </state>
       </provider>

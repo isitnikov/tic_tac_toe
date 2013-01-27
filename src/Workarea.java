@@ -128,11 +128,11 @@ public class Workarea extends JFrame
             content.add(tabbedPane, BorderLayout.CENTER);
 
             JPanel buttons = new JPanel();
-            JButton btnApply = new JButton(getString("apply"));
+            final JButton btnApply = new JButton(getString("apply"));
             buttons.add(btnApply);
-            JButton btnOk = new JButton(getString("ok"));
+            final JButton btnOk = new JButton(getString("ok"));
             buttons.add(btnOk);
-            JButton btnCancel = new JButton(getString("cancel"));
+            final JButton btnCancel = new JButton(getString("cancel"));
             buttons.add(btnCancel);
             content.add(buttons, BorderLayout.SOUTH);
 
@@ -159,11 +159,11 @@ public class Workarea extends JFrame
             JLabel cfgLngLabel = new JLabel(getString("language"), JLabel.LEFT);
             cfgPnlLanguage.add(cfgLngLabel, BorderLayout.WEST);
 
-            HashMap<String,String> languages = new HashMap<String, String>();
+            final HashMap<String,String> languages = new HashMap<String, String>();
             languages.put("ru-RU", "Русский");
             languages.put("en-US", "English");
 
-            JComboBox cfgLng = new JComboBox(languages.values().toArray());
+            final JComboBox cfgLng = new JComboBox(languages.values().toArray());
             cfgLng.setSelectedItem(languages.get(Locale.getDefault().toLanguageTag()));
             cfgPnlLanguage.add(cfgLng, BorderLayout.CENTER);
             /**
@@ -178,7 +178,7 @@ public class Workarea extends JFrame
             JLabel cfgPlr1Label = new JLabel(getString("player1"), JLabel.LEFT);
             cfgPnlPlayer1.add(cfgPlr1Label, BorderLayout.WEST);
 
-            JComboBox player1List = new JComboBox(Db.getInstance().getPlayersAsObjects().toArray());
+            final JComboBox player1List = new JComboBox(Db.getInstance().getPlayersAsObjects().toArray());
             player1List.setSelectedItem(PlayerCollection.getPlayer(Integer.parseInt(getConfigurationHash().get("player1").toString())));
             cfgPnlPlayer1.add(player1List, BorderLayout.CENTER);
 
@@ -194,12 +194,105 @@ public class Workarea extends JFrame
             JLabel cfgPlr2Label = new JLabel(getString("player2"), JLabel.LEFT);
             cfgPnlPlayer2.add(cfgPlr2Label, BorderLayout.WEST);
 
-            JComboBox player2List = new JComboBox(Db.getInstance().getPlayersAsObjects().toArray());
+            final JComboBox player2List = new JComboBox(Db.getInstance().getPlayersAsObjects().toArray());
             player2List.setSelectedItem(PlayerCollection.getPlayer(Integer.parseInt(getConfigurationHash().get("player2").toString())));
             cfgPnlPlayer2.add(player2List, BorderLayout.CENTER);
             /**
              * }
              */
+
+            player1List.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //To change body of implemented methods use File | Settings | File Templates.
+                    String s = e.getActionCommand();
+                    if (s.equals("comboBoxChanged")) {
+                        JComboBox playerList = (JComboBox) e.getSource();
+                        HumanPlayer player1 = (HumanPlayer) playerList.getSelectedItem();
+                        HumanPlayer player2 = (HumanPlayer) player2List.getSelectedItem();
+
+                        if (player1.getId() == player2.getId()) {
+                            JOptionPane.showMessageDialog(desktop, Workarea.getString("player_cannot_be_eqals_to_another"), Workarea.getString("select_player"), JOptionPane.ERROR_MESSAGE);
+                            playerList.setSelectedItem(
+                                PlayerCollection.getPlayer(Integer.parseInt(getConfigurationHash().get("player1").toString()))
+                            );
+                        }
+
+                    }
+                }
+            });
+
+            player2List.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //To change body of implemented methods use File | Settings | File Templates.
+                    String s = e.getActionCommand();
+                    if (s.equals("comboBoxChanged")) {
+                        JComboBox playerList = (JComboBox) e.getSource();
+                        HumanPlayer player1 = (HumanPlayer) playerList.getSelectedItem();
+                        HumanPlayer player2 = (HumanPlayer) player1List.getSelectedItem();
+
+                        if (player1.getId() == player2.getId()) {
+                            JOptionPane.showMessageDialog(desktop, Workarea.getString("player_cannot_be_eqals_to_another"), Workarea.getString("select_player"), JOptionPane.ERROR_MESSAGE);
+                            playerList.setSelectedItem(
+                                PlayerCollection.getPlayer(Integer.parseInt(getConfigurationHash().get("player2").toString()))
+                            );
+                        }
+
+                    }
+                }
+            });
+
+            btnCancel.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    configuration.doDefaultCloseAction();
+                }
+            });
+
+            btnApply.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Map<String, Object> configurationCopy = getConfigurationHash();
+
+                    HumanPlayer player1 = (HumanPlayer) player1List.getSelectedItem();
+                    configurationCopy.put("player1", player1.getId());
+                    HumanPlayer player2 = (HumanPlayer) player2List.getSelectedItem();
+                    configurationCopy.put("player2", player2.getId());
+
+                    String locale = null;
+                    int k = 0;
+                    for (String language : languages.values()) {
+                        if (language.equals(cfgLng.getSelectedItem().toString())) {
+                            break;
+                        }
+                        k++;
+                    }
+                    int lK = 0;
+                    for (String languageKey : languages.keySet()) {
+                        if (k == lK) {
+                            locale = languageKey;
+                            break;
+                        }
+                        lK++;
+                    }
+
+                    configurationCopy.put("locale", locale);
+
+//                    if (!configurationCopy.equals(getConfigurationHash())) {
+                        Db.getInstance().insertOrUpdate("Configuration", (HashMap<String, Object>) configurationCopy, null);
+//                    }
+
+                }
+            });
+
+            btnOk.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    btnApply.doClick();
+                    btnCancel.doClick();
+                }
+            });
 
             JPanel tabPlayersBorder = new JPanel();
             tabPlayersBorder.setLayout(new BorderLayout());

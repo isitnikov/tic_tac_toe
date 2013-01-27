@@ -58,12 +58,12 @@ final public class GameFabric {
          */
         game.getFrame().setTitle(game.getFrame().getTitle() + ' ' + getCollection().getSize());
 
-        PlayerAbstract player1 = new HumanPlayer();
+        HumanPlayer player1 = PlayerCollection.getPlayer((Integer) Workarea.getInstance().getConfigurationHash().get("player1"));
         player1.setIcon(Icons.get("cross-lines"));
         player1.setReady(false);
         game.setPlayer(player1);
 
-        PlayerAbstract player2 = new HumanPlayer();
+        HumanPlayer player2 = PlayerCollection.getPlayer((Integer) Workarea.getInstance().getConfigurationHash().get("player2"));
         player2.setIcon(Icons.get("circle"));
         game.setPlayer(player2);
 

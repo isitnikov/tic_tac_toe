@@ -35,6 +35,9 @@ public class PlayerCollection
 
     public static HumanPlayer getPlayer(int playerId)
     {
+        if (getSize() == 0) {
+            Db.getInstance().getPlayersAsObjects();
+        }
         return hashMap.containsKey(playerId) ? hashMap.get(playerId) : null;
     }
 }

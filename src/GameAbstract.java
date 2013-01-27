@@ -21,7 +21,7 @@ abstract public class GameAbstract
 {
     private WorkareaPane frame = null;
     private String title = Workarea.getString("game");
-    private List<PlayerAbstract> players = new ArrayList<PlayerAbstract>();
+    private List<HumanPlayer> players = new ArrayList<HumanPlayer>();
     private int currentPlayer = 0;
     private boolean enabled = true;
 
@@ -30,7 +30,7 @@ abstract public class GameAbstract
     private JPanel statusPanel = null;
     private JLabel statusLabel = null;
 
-    private PlayerAbstract winner = null;
+    private HumanPlayer winner = null;
 
     protected boolean cube = false;
     protected int edge = 0;
@@ -91,7 +91,7 @@ abstract public class GameAbstract
                         if (enabled == true) {
                             Field btn = (Field) e.getSource();
                             GameAbstract game = btn.getGame();
-                            PlayerAbstract player = game.getCurrentPlayer();
+                            HumanPlayer player = game.getCurrentPlayer();
 
                             player.action();
 
@@ -125,7 +125,7 @@ abstract public class GameAbstract
         return frame;
     }
 
-    public void setPlayer(PlayerAbstract player)
+    public void setPlayer(HumanPlayer player)
     {
         player.setGame(this);
         players.add(player);
@@ -136,7 +136,7 @@ abstract public class GameAbstract
         if (enabled == false) {
             return false;
         }
-        if (checkFields() == true) {
+        if (checkFields() == true || outOfMoves() == true) {
             endGame();
             return false;
         }
@@ -151,7 +151,21 @@ abstract public class GameAbstract
         return true;
     }
 
-    protected PlayerAbstract getCurrentPlayer()
+    private boolean outOfMoves() {
+        for (int s = 0; s < matrix.length; s++) {
+            for (int i = 0; i < matrix[s].length; i++) {
+                for (int j = 0; j < matrix[s][i].length; j++) {
+                    if (matrix[s][i][j].getPlayer() == null) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;  //To change body of created methods use File | Settings | File Templates.
+    }
+
+    protected HumanPlayer getCurrentPlayer()
     {
         return players.get(currentPlayer);
     }
@@ -164,7 +178,7 @@ abstract public class GameAbstract
     }
 
     protected boolean checkFields(Field[] fields) {
-        PlayerAbstract player = null;
+        HumanPlayer player = null;
 
         for(int i = 0; i < fields.length; i++) {
             Field field = fields[i];
@@ -185,6 +199,8 @@ abstract public class GameAbstract
         }
 
         winner = player;
+        winner.setWins(winner.getWins() + 1);
+        winner.save();
 
         return true;
     }
@@ -294,10 +310,14 @@ abstract public class GameAbstract
         return getEdge()*getEdge();
     }
 
-    protected void endGame() {
+    protected void endGame()
+    {
         enabled = false;
-        int playerIndex = players.indexOf(winner);
-        JOptionPane.showInternalMessageDialog(frame, String.format(Workarea.getString("player_x_wins"), playerIndex), Workarea.getString("game_over"), JOptionPane.INFORMATION_MESSAGE);
+        if (winner != null) {
+            JOptionPane.showInternalMessageDialog(frame, String.format(Workarea.getString("player_x_wins"), winner.getName()), Workarea.getString("game_over"), JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showInternalMessageDialog(frame, Workarea.getString("winner_is_not_objective"), Workarea.getString("game_over"), JOptionPane.INFORMATION_MESSAGE);
+        }
         for (int slice = 0; slice < getType(); slice++) {
             for (int row = 0; row < getEdge(); row++) {
                 for (int column = 0; column < getEdge(); column++) {

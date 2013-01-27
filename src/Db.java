@@ -104,7 +104,18 @@ public class Db {
         String sql = "";
         try{
             int i = 0;
-            if (id == 0) {
+            if (id == null) {
+                sql = "UPDATE " + table + " SET ";
+                i = 0;
+                Set<String> keySet = data.keySet();
+                for (String key : keySet) {
+                    i++;
+                    sql += "'" + key + "'=?";
+                    if (i != keySet.size()) {
+                        sql += ",";
+                    }
+                }
+            } else if (id == 0) {
                 sql = "INSERT INTO " + table + " ('id'";
                 for (String key : data.keySet()) {
                     sql += ",'" + key + "'";

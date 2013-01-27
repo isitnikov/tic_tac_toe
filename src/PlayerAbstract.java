@@ -17,6 +17,10 @@ abstract public class PlayerAbstract {
     protected GameAbstract _game = null;
     protected boolean ready = true;
 
+    public String toString() {
+        return id + ") " + name;
+    }
+
     public PlayerAbstract() {
 
     }
@@ -37,6 +41,10 @@ abstract public class PlayerAbstract {
 
     public int getWins() {
         return wins;
+    }
+
+    public void setWins(int _wins) {
+        wins = _wins;
     }
 
     public void setName(String _name) {

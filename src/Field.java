@@ -64,5 +64,8 @@ public class Field extends JButton {
 
     public void setIndex(int index) {
         _index = index;
+        setText(String.valueOf(index+1));
     }
+
+
 }

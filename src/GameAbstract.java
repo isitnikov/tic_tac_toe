@@ -3,9 +3,14 @@ import javax.swing.border.BevelBorder;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
+import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -40,6 +45,10 @@ abstract public class GameAbstract
      */
     private Field[][][] matrix = null;
 
+    private HashMap<PlayerAbstract,List<Integer>> moves = new HashMap<PlayerAbstract, List<Integer>>();
+
+    private JButton exportButton = null;
+
     public GameAbstract(boolean _cube, int _edge)
     {
         edge = _edge;
@@ -65,14 +74,19 @@ abstract public class GameAbstract
             }
         });
 
+        exportButton = new JButton(Workarea.getString("export_results"));
+        exportButton.setIcon(Icons.get("report"));
+        exportButton.setEnabled(false);
+
         statusPanel = new JPanel();
         statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
         frame.add(statusPanel, BorderLayout.SOUTH);
-        statusPanel.setPreferredSize(new Dimension(frame.getWidth(), 16));
+        statusPanel.setPreferredSize(new Dimension(frame.getWidth(), 24));
         statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
         statusLabel = new JLabel("status");
         statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
         statusPanel.add(statusLabel);
+        statusPanel.add(exportButton,BorderLayout.EAST);
 
         panel = new JPanel(new GridLayout(1, getType()));
         panels = new JPanel[getType()];
@@ -101,7 +115,9 @@ abstract public class GameAbstract
                             Music.play("pencil.wav");
                             btn.setPlayer(player);
 
+                            game.logMove(player,btn.getIndex());
                             game.move();
+
                         }
                     }
                 });
@@ -129,6 +145,13 @@ abstract public class GameAbstract
     {
         player.setGame(this);
         players.add(player);
+    }
+
+    public void logMove(PlayerAbstract player, int position) {
+        if (!moves.containsKey(player)) {
+            moves.put(player, new ArrayList<Integer>());
+        }
+        moves.get(player).add(position);
     }
 
     public boolean move()
@@ -310,6 +333,17 @@ abstract public class GameAbstract
         return getEdge()*getEdge();
     }
 
+    private String getExtension(File f) {
+        String ext = null;
+        String s = f.getName();
+        int i = s.lastIndexOf('.');
+
+        if (i > 0 &&  i < s.length() - 1) {
+            ext = s.substring(i+1).toLowerCase();
+        }
+        return ext;
+    }
+
     protected void endGame()
     {
         enabled = false;
@@ -318,6 +352,105 @@ abstract public class GameAbstract
         } else {
             JOptionPane.showInternalMessageDialog(frame, Workarea.getString("winner_is_not_objective"), Workarea.getString("game_over"), JOptionPane.INFORMATION_MESSAGE);
         }
+        statusLabel.setText(Workarea.getString("game_over"));
+        exportButton.setEnabled(true);
+        exportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                final JFileChooser fc = new JFileChooser();
+                fc.setSelectedFile(new File(Workarea.getString("results") + ".html"));
+                fc.setDialogTitle(Workarea.getString("save_results"));
+                fc.setFileFilter(new FileFilter() {
+                    @Override
+                    public boolean accept(File f) {
+                        if (f.isDirectory()) {
+                            return true;
+                        }
+
+                        String extension = getExtension(f);
+                        if (extension != null) {
+                            if (extension.equals("html")) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+
+                        return false;
+                    }
+
+                    @Override
+                    public String getDescription() {
+                        return "HTML " + Workarea.getString("documents");  //To change body of implemented methods use File | Settings | File Templates.
+                    }
+                });
+                int returnVal = fc.showSaveDialog(getFrame());
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fc.getSelectedFile();
+
+                    BufferedWriter bw = null;
+                    try {
+                        bw = new BufferedWriter(new FileWriter(file));
+                        bw.write("<html>");
+                        bw.write("<head>");
+                        bw.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
+                        bw.write("</head>");
+                        bw.write("<body>");
+                        bw.write("<h1>" + Workarea.getString("game_results") + "</h1>");
+
+                        int i = 0;
+                        for (PlayerAbstract player : moves.keySet()) {
+                            i++;
+                            bw.write("<h2>" + Workarea.getString("player" + i) + ": " + player.getName() + "</h2>");
+                            bw.write("<div style='overflow:hidden;'>");
+                            List<Integer> list = moves.get(player);
+                            bw.write("<h3>" + Workarea.getString("moves") + "</h3><ul>");
+                            for (int key : list) {
+                                bw.write("<li>" + (key + 1) + "</li>");
+                            }
+                            bw.write("</ul>");
+                            for (int slice = 0; slice < matrix.length; slice++) {
+                                bw.write("<table border='1' cellpadding='5px' cellspacing='1px' align='left' style='margin-right: 5px;'>");
+                                for (int m = 0; m < matrix[slice].length; m++) {
+                                    bw.write("<tr>");
+                                    for (int n = 0; n < matrix[slice][m].length; n++) {
+                                        Field f = matrix[slice][m][n];
+                                        String color = "#FFFFFF";
+                                        if (f.getPlayer() != null && f.getPlayer().equals(player)) {
+                                            color = "#DDDDDD";
+                                        }
+                                        bw.write("<td bgcolor='"+ color +"' width='25px' height='25px'>");
+                                        if (f.getPlayer() != null && f.getPlayer().equals(player)) {
+                                            bw.write("<b>" + (matrix[slice][m][n].getIndex()+1) + "</b>");
+                                        } else {
+                                            bw.write(String.valueOf(matrix[slice][m][n].getIndex()+1));
+                                        }
+                                        bw.write("</td>");
+                                    }
+                                    bw.write("</tr>");
+                                }
+                                bw.write("</table>");
+                            }
+                            bw.write("</div>");
+                        }
+                        bw.write("<div style='overflow:hidden;'>");
+                        if (winner != null) {
+                            bw.write("<h2>" + Workarea.getString("result_of_game") + ": " + String.format(Workarea.getString("player_x_wins"), winner.getName()) + "</h2>");
+                        } else {
+                            bw.write("<h2>" + Workarea.getString("result_of_game") + ": " + Workarea.getString("winner_is_not_objective") + "</h2>");
+                        }
+                        bw.write("</div>");
+                        bw.write("</body>");
+                        bw.write("</html>");
+                        bw.close();
+
+                        Desktop.getDesktop().browse(file.toURI());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    }
+                }
+            }
+        });
         for (int slice = 0; slice < getType(); slice++) {
             for (int row = 0; row < getEdge(); row++) {
                 for (int column = 0; column < getEdge(); column++) {

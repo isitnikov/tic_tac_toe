@@ -246,19 +246,21 @@ public class Workarea extends JFrame
             btnCancel.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    configuration.doDefaultCloseAction();
+                    if (configuration != null) {
+                        configuration.doDefaultCloseAction();
+                    }
                 }
             });
 
             btnApply.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Map<String, Object> configurationCopy = getConfigurationHash();
+                    String currentLocale = getConfigurationHash().get("locale").toString();
 
                     HumanPlayer player1 = (HumanPlayer) player1List.getSelectedItem();
-                    configurationCopy.put("player1", player1.getId());
+                    getConfigurationHash().put("player1", player1.getId());
                     HumanPlayer player2 = (HumanPlayer) player2List.getSelectedItem();
-                    configurationCopy.put("player2", player2.getId());
+                    getConfigurationHash().put("player2", player2.getId());
 
                     String locale = null;
                     int k = 0;
@@ -277,12 +279,21 @@ public class Workarea extends JFrame
                         lK++;
                     }
 
-                    configurationCopy.put("locale", locale);
+                    getConfigurationHash().put("locale", locale);
 
-//                    if (!configurationCopy.equals(getConfigurationHash())) {
-                        Db.getInstance().insertOrUpdate("Configuration", (HashMap<String, Object>) configurationCopy, null);
-//                    }
+                    Db.getInstance().insertOrUpdate("Configuration", (HashMap<String, Object>) getConfigurationHash(), null);
 
+                    if (!currentLocale.equals(locale.toString())) {
+
+                        Locale.setDefault(Locale.forLanguageTag(locale.toString()));
+                        _locale = null;
+                        _initMenu();
+                        _initToolbar();
+                        configuration.doDefaultCloseAction();
+                        configuration = null;
+                        results = null;
+
+                    }
                 }
             });
 
@@ -314,7 +325,7 @@ public class Workarea extends JFrame
             tabPlayers.add(plrPnlTable, BorderLayout.CENTER);
 
             JPanel plrPnlControls = new JPanel();
-            //plrPnlControls.setLayout(new BorderLayout());
+            plrPnlControls.setLayout(new BorderLayout());
 
             JButton plrPnlControlsBtnAdd = new JButton(getString("add"));
             plrPnlControlsBtnAdd.addActionListener(new ActionListener() {
@@ -346,9 +357,9 @@ public class Workarea extends JFrame
                 }
             });
 
-            plrPnlControls.add(plrPnlControlsBtnAdd, BorderLayout.SOUTH);
-            plrPnlControls.add(plrPnlControlsBtnRemove, BorderLayout.SOUTH);
-            plrPnlTable.add(plrPnlControls, BorderLayout.PAGE_END);
+            plrPnlControls.add(plrPnlControlsBtnAdd, BorderLayout.WEST);
+            plrPnlControls.add(plrPnlControlsBtnRemove, BorderLayout.EAST);
+            plrPnlTable.add(plrPnlControls, BorderLayout.PAGE_START);
 
 
             configuration.pack();
@@ -364,6 +375,8 @@ public class Workarea extends JFrame
 
     private void _initToolbar()
     {
+        toolbar.removeAll();
+
         JButton newGame = new JButton(Icons.get("joystick"));
         newGame.setToolTipText(Workarea.getString("new"));
         newGame.addActionListener(new ActionListener() {
@@ -374,15 +387,15 @@ public class Workarea extends JFrame
         });
         toolbar.add(newGame);
 
-        JButton results = new JButton(Icons.get("report_user"));
-        results.setToolTipText(Workarea.getString("results"));
-        results.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Workarea.getInstance().createResults();
-            }
-        });
-        toolbar.add(results);
+//        JButton results = new JButton(Icons.get("report_user"));
+//        results.setToolTipText(Workarea.getString("results"));
+//        results.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                Workarea.getInstance().createResults();
+//            }
+//        });
+//        toolbar.add(results);
 
         JButton configuration = new JButton(Icons.get("cog"));
         configuration.setToolTipText(Workarea.getString("configuration"));
@@ -413,6 +426,8 @@ public class Workarea extends JFrame
     {
         setJMenuBar(menu);
 
+        menu.removeAll();
+
         JMenu fileMenu = new JMenu(Workarea.getString("game"));
 
         JMenuItem newItem = new JMenuItem(Workarea.getString("new"));
@@ -426,16 +441,16 @@ public class Workarea extends JFrame
         newItem.setVisible(true);
         fileMenu.add(newItem);
 
-        JMenuItem resultsItem = new JMenuItem(Workarea.getString("results"));
-        resultsItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Workarea.getInstance().createResults();
-            }
-        });
-        resultsItem.setIcon(Icons.get("report_user"));
-        resultsItem.setVisible(true);
-        fileMenu.add(resultsItem);
+//        JMenuItem resultsItem = new JMenuItem(Workarea.getString("results"));
+//        resultsItem.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                Workarea.getInstance().createResults();
+//            }
+//        });
+//        resultsItem.setIcon(Icons.get("report_user"));
+//        resultsItem.setVisible(true);
+//        fileMenu.add(resultsItem);
 
         JMenuItem configurationItem = new JMenuItem(Workarea.getString("configuration"));
         configurationItem.addActionListener(new ActionListener() {
